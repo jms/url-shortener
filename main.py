@@ -7,7 +7,7 @@ from bottle import (
 @route('/')
 @jinja2_view('index.html', template_lookup=['views'])
 def index():
-    return {'title': 'Hello world'}
+    return {'title': 'url-shortener test page'}
 
 
 # static files handle
