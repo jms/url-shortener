@@ -1,0 +1,4 @@
+bottle==0.12.9
+ipython==4.2.0
+ipython-genutils==0.1.0
+Jinja2==2.8
