@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='check-phone-number',
+    name='url-shortener',
     version='1.0',
     url="https://github.com/jms/url-shortener",
     author="Jeronimo Martinez Sanchez",
