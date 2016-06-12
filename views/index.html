@@ -1,18 +1,29 @@
 {% extends "base.html" %}
-{% block title %}
-{{title}}
-    {% endblock %}
-{% block head %}
-    {{ super() }}
-    <style type="text/css">
-        .important {
-            color: #336699;
-        }
-    </style>
-{% endblock %}
+{% block title %} {{title}} {% endblock %}
 {% block content %}
-    <h1>Index</h1>
-    <p class="important">
-        Welcome to my awesome homepage.
-    </p>
+<p></p>
+<h2 class="ui left aligned header container">
+    <i class="terminal icon"></i>
+    <div class="content">
+        <p>URL shortener</p>
+    </div>
+</h2>
+<div class="ui divider"></div>
+<div class="ui container">
+    <div class="ui secondary segment">
+        <h4>Paste your long URL here:</h4>
+        <div class="ui form">
+            <form>
+                <div class="fields">
+                    <div class="field fourteen wide">
+                        <input type="text" name="url" placeholder="">
+                    </div>
+                    <div class="field two wide">
+                        <button class="ui primary button" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
