@@ -1,6 +1,6 @@
 from bottle import (
     route, default_app, get, request, response,
-    template, static_file, jinja2_view, run
+    static_file, jinja2_view
 )
 
 
@@ -31,5 +31,5 @@ def stylesheets(filename):
     return static_file(filename, root='static/css')
 
 
-# application = default_app()
-run(host='localhost', port=8080, debug=True)
+application = default_app()
+# run(host='localhost', port=8080, debug=True)
