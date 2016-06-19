@@ -7,7 +7,7 @@ setup(
     author="Jeronimo Martinez Sanchez",
     author_email="jms@rz0r.net",
     description="URL shortener ",
-    py_modules=['app'],
+    py_modules=['main'],
     setup_requires=['pytest-runner', ],
     tests_require=['pytest', ]
 )

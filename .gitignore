@@ -89,4 +89,5 @@ ENV/
 .ropeproject
 
 # pycharm project settings
-.idea/*
+.idea
+frontend-src/node_modules
