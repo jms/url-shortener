@@ -103,7 +103,8 @@ class ShortUrl(object):
         if all(c in valid_char_list for c in input_code):
             code = redis.get(hash_code)
             if code:
-                return code.real_url  # default 302
+                data = json.loads(code)
+                return data.get('real_url', None)  # default 302
             else:
                 return 'Not url found'  # 404
         else:
@@ -112,12 +113,12 @@ class ShortUrl(object):
     def generate_short_url(self, real_url):
         redis = self.conn.r
         code = self.service.encode(self.conn.generate_url_id())
-        exp_date = self.conn.get_expiration_date()
+        exp_date = self.conn.get_expiration_date().isoformat()
         data = {
             'real_url': real_url,
             'expiration_date': exp_date
         }
-        redis.set(code, data)
+        redis.set(code, json.dumps(data))
         return code
 
 
