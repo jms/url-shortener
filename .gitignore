@@ -90,4 +90,5 @@ ENV/
 
 # pycharm project settings
 .idea
-frontend-src/node_modules
+frontend/node_modules
+frontend/bin/*
