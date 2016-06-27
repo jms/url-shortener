@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/jms/url-shortener/issues"
   },
-  "homepage": "https://github.com/jms/url-shortener#readme",
+  "homepage": "https://github.com/jms/url-shortener",
   "devDependencies": {
     "typescript": "^1.8.10",
     "webpack": "^1.13.1",
