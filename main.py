@@ -1,3 +1,4 @@
+import json
 from bottle import (
     route, default_app, get, request, response,
     static_file, jinja2_view, run
@@ -13,6 +14,23 @@ service = UrlShortener()
 @jinja2_view('index.html')
 def index():
     return {'title': 'url-shortener home page'}
+
+
+@route('/', method='POST')
+def get_short_url():
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        data = request.json
+        if data.get('long_url'):
+            real_url = data.get('long_url')
+            code = service.generate_short_url(real_url)
+
+
+@route('/my_ip')
+def show_ip():
+    ip = request.environ.get('REMOTE_ADDR')
+    server_name = request.get('SERVER_NAME')
+    # or ip = request['REMOTE_ADDR']
+    return "Your IP is: {}, server name is {}".format(ip, server_name)
 
 
 # static files handle
