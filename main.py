@@ -71,9 +71,8 @@ def resolve_url(hash_code):
 @route('/my_ip')
 def show_ip():
     ip = request.environ.get('REMOTE_ADDR')
-    server_name = request.get('SERVER_NAME')
     # or ip = request['REMOTE_ADDR']
-    return "Your IP is: {}, server name is {}".format(ip, server_name)
+    return "Your IP is: {}".format(ip)
 
 
 # static files handle
