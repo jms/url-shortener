@@ -1,0 +1,193 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {},
+    "items": [
+        {
+            "kind": "ImageStream",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "url-shortener",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "url-shortener"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {},
+            "status": {
+                "dockerImageRepository": ""
+            }
+        },
+        {
+            "kind": "BuildConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "url-shortener",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "url-shortener"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "triggers": [
+                    {
+                        "type": "GitHub",
+                        "github": {
+                            "secret": "l5vYMilQgbXdEJKg0Q-s"
+                        }
+                    },
+                    {
+                        "type": "Generic",
+                        "generic": {
+                            "secret": "DWEyisb3Uqau0eWHMPOd"
+                        }
+                    },
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChange": {}
+                    }
+                ],
+                "source": {
+                    "type": "Git",
+                    "git": {
+                        "uri": "https://github.com/jms/url-shortener"
+                    },
+                    "secrets": []
+                },
+                "strategy": {
+                    "type": "Source",
+                    "sourceStrategy": {
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "namespace": "openshift",
+                            "name": "python:2.7"
+                        }
+                    }
+                },
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "url-shortener:latest"
+                    }
+                },
+                "resources": {},
+                "postCommit": {}
+            },
+            "status": {
+                "lastVersion": 0
+            }
+        },
+        {
+            "kind": "DeploymentConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "url-shortener",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "url-shortener"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "strategy": {
+                    "resources": {}
+                },
+                "triggers": [
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "url-shortener"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "url-shortener:latest"
+                            }
+                        }
+                    }
+                ],
+                "replicas": 1,
+                "test": false,
+                "selector": {
+                    "app": "url-shortener",
+                    "deploymentconfig": "url-shortener"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "url-shortener",
+                            "deploymentconfig": "url-shortener"
+                        },
+                        "annotations": {
+                            "openshift.io/container.url-shortener.image.entrypoint": "[\"container-entrypoint\",\"/bin/sh\",\"-c\",\"$STI_SCRIPTS_PATH/usage\"]",
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "url-shortener",
+                                "image": "url-shortener:latest",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {}
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {}
+        },
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "url-shortener",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "url-shortener"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "8080-tcp",
+                        "protocol": "TCP",
+                        "port": 8080,
+                        "targetPort": 8080
+                    }
+                ],
+                "selector": {
+                    "app": "url-shortener",
+                    "deploymentconfig": "url-shortener"
+                }
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ]
+}
