@@ -68,13 +68,6 @@ def resolve_url(hash_code):
         return {'title': '404'}
 
 
-@route('/my_ip')
-def show_ip():
-    ip = request.environ.get('REMOTE_ADDR')
-    # or ip = request['REMOTE_ADDR']
-    return "Your IP is: {}".format(ip)
-
-
 # static files handle
 @route('/images/<filename:re:.*\.png>')
 def send_image(filename):
