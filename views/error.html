@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <div class="ui container">
+        <div class="ui negative message">
+            <div class="header">
+                We're sorry we can't process the URL
+            </div>
+            <p>The URL is invalid or has expired</p>
+        </div>
+    </div>
+{% endblock %}

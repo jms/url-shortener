@@ -1,29 +1,33 @@
 {% extends "base.html" %}
-{% block title %} {{title}} {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 {% block content %}
-<p></p>
-<h2 class="ui left aligned header container">
-    <i class="terminal icon"></i>
-    <div class="content">
-        <p>URL shortener</p>
-    </div>
-</h2>
-<div class="ui divider"></div>
-<div class="ui container">
-    <div class="ui secondary segment">
-        <h4>Paste your long URL here:</h4>
-        <div class="ui form">
-            <form>
+
+
+    <div class="ui container">
+        <div class="ui secondary segment">
+            <h4>Paste your long URL here:</h4>
+            <div class="ui form attached">
                 <div class="fields">
-                    <div class="field fourteen wide">
-                        <input type="text" name="url" placeholder="">
+                    <div class="field twelve wide">
+                        <input type="text" id="long_url" name="long_url" placeholder="">
+                    </div>
+                    <div class="field two">
+                        <div class="ui clear button">Clear</div>
                     </div>
                     <div class="field two wide">
-                        <button class="ui primary button" type="submit">Submit</button>
+                        <div class="ui blue submit button">Submit</div>
                     </div>
+
                 </div>
-            </form>
+                <div class="ui error message"></div>
+            </div>
+        </div>
+        <div class="ui bottom attached floating message hidden" id="msg">
+            <div class="ui green horizontal label">New URL</div>
+            <span id="short_url"></span>
         </div>
     </div>
-</div>
+{% endblock %}
+{% block footer_js %}
+    <script src="/js/main.js"></script>
 {% endblock %}
