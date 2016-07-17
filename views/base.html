@@ -8,17 +8,27 @@
     <title>{% block title %}{% endblock %}</title>
 
     {% block head %}
-    <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/semantic-ui/semantic.min.js"></script>
+        <link rel="stylesheet" type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.js"></script>
     {% endblock %}
 </head>
 <body>
+<h2 class="ui left aligned header container">
+    <i class="terminal icon"></i>
+    <div class="content">
+        <p>
+            <a href="/">URL shortener </a>
+        </p>
+    </div>
+</h2>
+<div class="ui divider"></div>
 {% block content %} {% endblock %}
 <div id="footer">
     {% block footer %}{% endblock %}
 </div>
+{% block footer_js %}{% endblock %}
 </body>
 </html>
