@@ -73,17 +73,17 @@ def resolve_url(hash_code):
 def send_image(filename):
     return static_file(filename, root='/static/images', mimetype='image/png')
 
-
+# javascript
 @get('/js/<filename:re:.*\.js>')
 def javascripts(filename):
     return static_file(filename, root='static/js')
 
-
+# css
 @get('/css/<filename:re:.*\.css>')
 def stylesheets(filename):
     return static_file(filename, root='static/css')
 
-
+# path
 @route('/static/<filename:path>')
 def send_static(filename):
     return static_file(filename, root='static')
@@ -92,3 +92,4 @@ def send_static(filename):
 application = default_app()
 # run(host='localhost', port=8080, debug=True, server='waitress')
 # run(host='localhost', port=8080, debug=True, reloader=True)
+
