@@ -90,3 +90,5 @@ ENV/
 
 # pycharm project settings
 .idea
+
+reports/*
